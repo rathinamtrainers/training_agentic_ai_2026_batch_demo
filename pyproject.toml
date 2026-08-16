@@ -1,0 +1,58 @@
+[project]
+name = "session-02-first-agent"
+version = "0.1.0"
+description = "Session 2 lab: environment, a first Google ADK agent, and the LLM underneath it"
+
+# Slide 5: the runtime is pinned for all sixteen weeks. 3.14 exists; the GPU and
+# serving libraries Module 3 needs trail it by months. `uv` reads
+# .python-version and installs 3.13 itself, so nobody has to own a pyenv.
+requires-python = ">=3.13,<3.14"
+
+# Versions are PINNED, not floated. This lab is demonstrated live; a transitive
+# upgrade the night before a session is not a risk worth taking. When something
+# here goes stale, bump it deliberately, re-run `uv lock`, and walk the whole
+# run order in README.md before the session.
+dependencies = [
+    "google-adk==2.6.3",
+    # Arrives transitively with google-adk, and is declared anyway: we import
+    # google.genai.types directly (GenerateContentConfig, for temperature), and
+    # a demo should not depend on somebody else's transitive dependency.
+    "google-genai==2.17.0",
+    "python-dotenv==1.2.2",
+]
+
+[project.optional-dependencies]
+# Demo 7 only. Kept out of the base install so nothing about the agent demos
+# depends on a test runner being present.
+dev = [
+    "pytest==9.1.1",
+]
+# The stated fallback for the night the model API is down: run the same agent
+# against a local Ollama model. ADK reaches Ollama through LiteLLM, which is a
+# large dependency and is NOT part of the two-minute clean-clone demo -- install
+# it only if you want the fallback ready:  uv sync --extra ollama
+#
+# This is the one dependency here that is a range rather than an exact pin, and
+# that is a deliberate exception: it is an emergency path, never taught, and
+# ADK itself only constrains it as >=1.84. Pin it the day you rehearse it.
+ollama = [
+    "litellm>=1.84,<2",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# The demo scripts are numbered (00_, 01_, ...) so the running order is the
+# directory listing. Numbers make them non-importable, which is correct: they
+# are run, never imported. The shared modules beside them are importable and
+# unnumbered. Nothing here is a distributable package.
+py-modules = []
+
+[tool.pytest.ini_options]
+# So `pytest` finds uc1_service.py without anybody installing anything or
+# setting PYTHONPATH. Demo 7 must fail on five assertions and nothing else -- an
+# ImportError on stage teaches the wrong lesson entirely.
+pythonpath = ["."]
+testpaths = ["tests"]

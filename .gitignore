@@ -1,0 +1,13 @@
+# The environment is rebuilt with `uv sync`, never committed.
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets. .env.example is committed; .env never is.
+.env
+
+# Postgres data lives in a named Docker volume, but belt and braces.
+pgdata/
+
+.idea/
