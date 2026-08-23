@@ -15,6 +15,14 @@ The first six concepts from [`../adk_concepts.md`](../adk_concepts.md), in one r
 
 This demo uses **Vertex AI**, not an API key. Authenticate once:
 
+Install the dependencies once, from the repo root:
+
+```
+pip install -r requirements.txt
+```
+
+Then authenticate to Vertex AI:
+
 ```
 gcloud auth application-default login
 ```
@@ -31,8 +39,8 @@ confusing 403.
 ## Run it
 
 ```
-uv run python adk_01_core/core_agent.py
-uv run python adk_01_core/core_agent.py "How does an Agent differ from a Tool?"
+python adk_01_core/core_agent.py
+python adk_01_core/core_agent.py "How does an Agent differ from a Tool?"
 ```
 
 Both default questions share one session, so the second question ("And what is

@@ -17,8 +17,8 @@ New concepts:
 
 Run it:
 
-    uv run python adk_02_tools/tools_agent.py
-    uv run python adk_02_tools/tools_agent.py "What is a Runner?"
+    python adk_02_tools/tools_agent.py
+    python adk_02_tools/tools_agent.py "What is a Runner?"
 """
 
 from __future__ import annotations

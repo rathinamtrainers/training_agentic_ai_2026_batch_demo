@@ -19,6 +19,14 @@ authentication story does not change.
 
 Same as demo 1 — Vertex AI with Application Default Credentials:
 
+Install the dependencies once, from the repo root:
+
+```
+pip install -r requirements.txt
+```
+
+Then authenticate to Vertex AI:
+
 ```
 gcloud auth application-default login
 ```
@@ -26,8 +34,8 @@ gcloud auth application-default login
 ## Run it
 
 ```
-uv run python adk_02_tools/tools_agent.py
-uv run python adk_02_tools/tools_agent.py "What is an Event in ADK?"
+python adk_02_tools/tools_agent.py
+python adk_02_tools/tools_agent.py "What is an Event in ADK?"
 ```
 
 ## What to point at in class

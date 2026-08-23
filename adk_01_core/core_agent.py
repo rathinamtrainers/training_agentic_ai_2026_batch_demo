@@ -11,8 +11,8 @@ Six concepts, one file:
 
 Run it:
 
-    uv run python adk_01_core/core_agent.py
-    uv run python adk_01_core/core_agent.py "your own question"
+    python adk_01_core/core_agent.py
+    python adk_01_core/core_agent.py "your own question"
 """
 
 from __future__ import annotations

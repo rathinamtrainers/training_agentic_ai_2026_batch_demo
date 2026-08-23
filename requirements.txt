@@ -1,0 +1,15 @@
+# Dependencies for the ADK demos in adk_01_core/ and adk_02_tools/.
+#
+#     python -m venv .venv
+#     .venv\Scripts\activate
+#     pip install -r requirements.txt
+#
+# Versions are pinned to the ones these demos were written and tested against.
+# ADK is young and still moving; an unpinned install is the most likely reason a
+# demo that worked last term stops working this term.
+
+google-adk==2.6.3
+
+# Pulled in by google-adk, pinned here because the demos import it directly
+# (google.genai.types) rather than only through ADK.
+google-genai==2.17.0
