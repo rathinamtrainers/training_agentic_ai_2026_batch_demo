@@ -1,0 +1,21 @@
+# The evaluation step lives in its OWN virtualenv, and this is why.
+#
+# RAGAS 0.2.15 pins an older LangChain stack. Installed beside google-adk it
+# drags google-genai back to 1.x, which breaks ADK outright -- the agent stops
+# importing. Two environments is the boring, correct answer; forcing one is how
+# the evaluation step dies live on stage.
+#
+#   python -m venv .venv-eval
+#   .venv-eval/Scripts/pip install -r eval/requirements.txt     # Windows
+#   .venv-eval/bin/pip install -r eval/requirements.txt         # macOS / Linux
+#
+# The pins are deliberate and old. RAGAS 0.4.3 is current (2026-01-13) and
+# langchain-google-vertexai is on 3.x; this combination is the one that has been
+# run end to end against this course's code, and a demo is not the place to find
+# out whether the new one still works. Bump it deliberately, re-run both scripts,
+# then change these lines.
+
+ragas==0.2.15
+langchain-community==0.3.27
+langchain-google-vertexai==2.1.2
+python-dotenv==1.2.2
