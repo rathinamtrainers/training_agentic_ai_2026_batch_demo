@@ -41,3 +41,25 @@ for label, doc in (("GOOD", GOOD), ("VAGUE", VAGUE)):
     print(f"  name        : {declaration.name}")
     print(f"  parameters  : {declaration.parameters_json_schema}")
     print(f"  description : {declaration.description}")
+
+
+
+
+def search_knowledge_base(question: str) -> dict:
+    """Search this team's own Northwind Assurance documents.
+
+    Use this for any question about policy wordings, cover, exclusions, claims handling,
+    underwriting appetite, broker terms, complaints procedure, error codes, timescales or
+    authority limits. Search first; never answer such a question from memory.
+
+    Args:
+        question: The user's question, in their own words. Do not paraphrase it into keywords.
+
+    Returns:
+        A dict with a "passages" list; each passage has "source_file" and "clause" (cite both
+        as [source_file §clause]), "heading" and "content". An empty list means nothing matched.
+    """
+    return {"passages": []}
+
+
+

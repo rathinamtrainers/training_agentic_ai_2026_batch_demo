@@ -22,9 +22,13 @@ def search_knowledge_base(question: str) -> dict:
     return {"passages": [{"source_file": "01_escape_of_water.md", "clause": "4",
                           "content": "Escape of water from a neighbouring flat is covered. Excess GBP 350."}]}
 
-agent = Agent(name="grounded_answer_service", model=MODEL, tools=[search_knowledge_base],
-              instruction="Answer only from the passages the tool returns, and cite every claim"
-                          " inline as [source_file §clause]. Two sentences at most.")
+agent = Agent(
+    name="grounded_answer_service",
+    model=MODEL,
+    tools=[search_knowledge_base],
+    instruction="Answer only from the passages the tool returns, and cite every claim"
+                  " inline as [source_file §clause]. Two sentences at most."
+)
 
 async def main() -> None:
     runner, session = InMemoryRunner(agent=agent, app_name="concepts"), uuid.uuid4().hex[:8]
