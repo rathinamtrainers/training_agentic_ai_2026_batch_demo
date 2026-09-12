@@ -1,0 +1,97 @@
+{
+  "_comment": [
+    "The labelled golden set: twelve questions, three from each of Northwind's",
+    "four teams, each with a reference answer copied VERBATIM from the named",
+    "clause of the named document. If a corpus document changes, this file",
+    "changes with it or the score becomes fiction.",
+    "Twelve questions is a smoke alarm, not a grade. It tells you the retrieval",
+    "is not broken; it does not tell you it is good. Say that out loud before",
+    "the number lands, along with the other caveat: an LLM is scoring an LLM."
+  ],
+  "questions": [
+    {
+      "tenant_id": "claims",
+      "question": "Does our cover include an escape of water from a neighbouring flat?",
+      "reference": "Damage to the insured premises caused by an escape of water originating in a neighbouring flat, maisonette or adjoining property IS covered under this section, whether or not the neighbour is insured and whether or not the neighbour was negligent. The standard escape of water excess of £350 applies.",
+      "source_file": "01_escape_of_water.md",
+      "clause": "4"
+    },
+    {
+      "tenant_id": "claims",
+      "question": "How much can a claims handler authorise on a single claim without referral?",
+      "reference": "A claims handler may authorise settlement up to £5,000 on any one claim, and may authorise an interim payment up to £2,000, without referral.",
+      "source_file": "10_claims_authority_limits.md",
+      "clause": "1"
+    },
+    {
+      "tenant_id": "claims",
+      "question": "What excess applies to a subsidence claim?",
+      "reference": "The subsidence excess is £1,000 and is applied to every subsidence claim regardless of the cause. It is the highest excess in the Northwind Home policy and is stated on the schedule.",
+      "source_file": "04_subsidence_claims.md",
+      "clause": "2"
+    },
+    {
+      "tenant_id": "underwriting",
+      "question": "Can we write a 22 year old driver on a car in insurance group 32?",
+      "reference": "A driver under 25 on a vehicle in insurance group 30 or above is outside appetite and is declined, regardless of telematics, driving record or parental ownership. There is no referral route for this.",
+      "source_file": "01_motor_underwriting_guide.md",
+      "clause": "3"
+    },
+    {
+      "tenant_id": "underwriting",
+      "question": "What terms apply to a home risk in flood band C?",
+      "reference": "Band C properties are acceptable with a flood excess of £2,500 and only where there has been no flood claim in the last 10 years. The excess cannot be bought down.",
+      "source_file": "03_flood_risk_appetite.md",
+      "clause": "2"
+    },
+    {
+      "tenant_id": "underwriting",
+      "question": "Is there a fee for a mid-term adjustment?",
+      "reference": "A mid-term adjustment fee of £25 is charged for each adjustment, except where the adjustment is the correction of a Northwind error or the addition of cover following a life event such as bereavement.",
+      "source_file": "08_mid_term_adjustments.md",
+      "clause": "2"
+    },
+    {
+      "tenant_id": "broker_support",
+      "question": "What commission do we pay a broker on home business?",
+      "reference": "Commission is paid on net premium excluding insurance premium tax and any fees, at the following standard rates: private motor 12.5%, home 20%, small commercial combined 22.5%, and commercial motor 15%.",
+      "source_file": "01_broker_commission.md",
+      "clause": "1"
+    },
+    {
+      "tenant_id": "broker_support",
+      "question": "What does portal error NW-4471 mean and who fixes it?",
+      "reference": "The agency number is valid but does not carry the product being quoted. Broker Support checks the agency's product schedule and, where the product should be held, raises an agency amendment which takes one working day. The broker cannot clear NW-4471 themselves.",
+      "source_file": "05_portal_error_codes.md",
+      "clause": "2"
+    },
+    {
+      "tenant_id": "broker_support",
+      "question": "How long do brokers have to settle premium to Northwind?",
+      "reference": "Premium is settled to Northwind within 45 days of the end of the month of inception, renewal or adjustment. This is the standard credit period for all agencies.",
+      "source_file": "03_agency_terms_and_credit.md",
+      "clause": "1"
+    },
+    {
+      "tenant_id": "complaints",
+      "question": "How long do we have to send a final response to a complaint?",
+      "reference": "A final response is sent within eight weeks of the date the complaint was received. The final response states the outcome, the reasons for it, any redress offered, and the customer's right to refer the complaint to the Financial Ombudsman Service within six months.",
+      "source_file": "01_complaints_handling_procedure.md",
+      "clause": "4"
+    },
+    {
+      "tenant_id": "complaints",
+      "question": "How much goodwill can a complaints handler authorise?",
+      "reference": "A complaints handler may authorise up to £500. A complaints team leader may authorise up to £2,500. Above £2,500 requires the head of customer relations. Any payment above £10,000 requires the chief operating officer.",
+      "source_file": "04_goodwill_payments.md",
+      "clause": "2"
+    },
+    {
+      "tenant_id": "complaints",
+      "question": "How long does a customer have to refer a complaint to the Financial Ombudsman Service?",
+      "reference": "A customer may refer a complaint to the Financial Ombudsman Service within six months of the date of our final response. The right and the deadline are stated in every final response.",
+      "source_file": "02_ombudsman_referral.md",
+      "clause": "1"
+    }
+  ]
+}

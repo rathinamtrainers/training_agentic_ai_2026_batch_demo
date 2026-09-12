@@ -1,0 +1,40 @@
+# The store. One `docker compose up -d`, one `docker compose down`.
+# Nothing is installed on the host machine.
+#
+# The database is disposable. `docker compose down -v` deletes it and
+# `01_ingest.py` rebuilds it in about a minute. It holds nothing that cannot be
+# rebuilt from the corpus.
+
+services:
+  postgres:
+    # Postgres 18 with pgvector already compiled in, pinned to an exact tag.
+    # "latest" is how a demo that worked in rehearsal breaks on the night.
+    image: pgvector/pgvector:0.8.6-pg18
+    container_name: sagedesk_uc1_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sagedesk}
+      POSTGRES_USER: ${POSTGRES_USER:-sagedesk}
+      # No password is written into this repository. Compose reads it from
+      # demo/.env and refuses to start without one.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in demo/.env - copy .env.example}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # /var/lib/postgresql -- NOT /var/lib/postgresql/data. Postgres 18 moved
+      # PGDATA into a major-version subdirectory (/var/lib/postgresql/18/docker)
+      # and the image REFUSES TO START if it finds a mount at the old path:
+      # "there appears to be PostgreSQL data in /var/lib/postgresql/data
+      # (unused mount/volume)". See docker-library/postgres#1259. Do not tidy
+      # this back to /data.
+      - sagedesk_uc1_pgdata:/var/lib/postgresql
+      # Runs once, on an empty volume, so the database knows what a vector is
+      # before anything tries to store one.
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sagedesk} -d ${POSTGRES_DB:-sagedesk}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  sagedesk_uc1_pgdata:

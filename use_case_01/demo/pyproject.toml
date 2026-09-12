@@ -1,0 +1,56 @@
+[project]
+name = "sagedesk-uc1-grounded-answer-service"
+version = "1.0.0"
+description = "SageDesk UC1 -- Northwind Assurance's tenant-scoped Grounded Answer Service"
+
+# The runtime is pinned for the whole programme. 3.14 exists; the GPU and
+# serving libraries the later modules need trail it by months. `uv` reads
+# .python-version and installs 3.13 itself, so nobody has to own a pyenv.
+requires-python = ">=3.13,<3.14"
+
+# Versions are PINNED, not floated. This is demonstrated live, and a transitive
+# upgrade the night before a session is not a risk worth taking. When something
+# here goes stale, bump it deliberately, re-run `uv lock`, and walk the whole
+# run order in README.md before the session.
+#
+# google-adk is held at 2.6.3 while 2.8.0 is current, and the gap is taught:
+# ADK 2.8.0 requires google-genai >= 2.19, so the two pins move together or not
+# at all. That is what a version pin is for.
+dependencies = [
+    "google-adk==2.6.3",
+    "google-genai==2.17.0",
+    "psycopg[binary]==3.3.4",
+    "pgvector==0.5.0",
+    "python-dotenv==1.2.2",
+    "fastapi==0.141.1",
+    "uvicorn[standard]==0.52.4",
+]
+
+[project.optional-dependencies]
+# The acceptance run.
+dev = [
+    "pytest==9.1.1",
+]
+# Deployment only. Kept out of the base install so a laptop that will never
+# deploy does not resolve the Google Cloud SDK and everything under it.
+deploy = [
+    "google-cloud-aiplatform[adk,agent_engines]==1.163.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# The demo scripts are numbered (00_, 01_, ...) so the running order is the
+# directory listing. The numbers make them non-importable, which is correct:
+# they are run, never imported. The shared modules beside them are importable
+# and unnumbered. Nothing here is a distributable package.
+py-modules = []
+
+[tool.pytest.ini_options]
+# So `pytest` finds agent.py without anybody setting PYTHONPATH. The acceptance
+# run must fail on assertions and nothing else -- an ImportError on stage
+# teaches the wrong lesson entirely.
+pythonpath = ["."]
+testpaths = ["test_acceptance.py"]

@@ -1,0 +1,23 @@
+# The environment is rebuilt with `uv sync`, never committed.
+.venv/
+.venv-eval/
+.venv-tools/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Secrets. .env.example is committed; .env never is.
+.env
+
+# Evaluation output. The generated answers are bulky and disposable; the score
+# files are small and are worth keeping when you have run one, so they are
+# ignored by default and un-ignored on the next line -- `git add -f` is not
+# needed, just commit the score file deliberately.
+eval/answers_rerank_*.json
+eval/score_rerank_*.json
+!eval/score_rerank_on.json
+!eval/score_rerank_off.json
+
+# Postgres data lives in a named Docker volume, but belt and braces.
+pgdata/

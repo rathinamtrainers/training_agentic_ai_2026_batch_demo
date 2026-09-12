@@ -1,0 +1,11 @@
+{
+  "answers_file": "answers_rerank_on.json",
+  "rerank": "on",
+  "questions": 12,
+  "judge_model": "gemini-2.5-flash",
+  "scores": {
+    "faithfulness": 0.8229,
+    "answer_relevancy": 0.8162,
+    "llm_context_precision_with_reference": 1.0
+  }
+}
