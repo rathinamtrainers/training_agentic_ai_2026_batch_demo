@@ -1,0 +1,46 @@
+# The stack around the agent. One `docker compose up -d`, one
+# `docker compose down`. Nothing is installed on the host machine.
+#
+# Slide 7, said out loud on the night: tonight this database sits there doing
+# nothing, and that is on purpose. Session 3 ingests into it. Declaring it now
+# means next week is one command instead of a new moving part in front of a
+# live room.
+#
+# The database is disposable. `docker compose down -v` deletes it; session 3
+# re-ingests it in two minutes. It holds nothing that cannot be rebuilt.
+
+services:
+  postgres:
+    # Postgres 18 with pgvector already compiled in, pinned to an exact tag.
+    # "latest" is how a demo that worked in rehearsal breaks on the night.
+    image: pgvector/pgvector:0.8.6-pg18
+    container_name: session02_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-agentic}
+      POSTGRES_USER: ${POSTGRES_USER:-agentic}
+      # No password is written into this repository. Compose reads it from
+      # src/session_02/.env and refuses to start without it.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in src/session_02/.env - copy .env.example}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # /var/lib/postgresql -- NOT /var/lib/postgresql/data. Postgres 18 moved
+      # PGDATA into a major-version subdirectory (/var/lib/postgresql/18/docker)
+      # and the image REFUSES TO START if it finds a mount at the old 17-and-
+      # earlier path: "there appears to be PostgreSQL data in
+      # /var/lib/postgresql/data (unused mount/volume)". See
+      # docker-library/postgres#1259. Do not tidy this back to /data.
+      - session02_pgdata:/var/lib/postgresql
+      # Runs once, on an empty volume, and creates the extension so session 3
+      # starts from a database that already knows what a vector is.
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # 00_check_environment.py checks the port answers; this checks the
+      # database is actually ready to take a query.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-agentic} -d ${POSTGRES_DB:-agentic}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  session02_pgdata:

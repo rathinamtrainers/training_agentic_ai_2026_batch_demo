@@ -1,9 +1,17 @@
+# The environment is rebuilt from requirements.txt / `uv sync`, never committed.
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 *.egg-info/
-.venv/
-venv/
+.pytest_cache/
+
+# Secrets. .env.example is committed; .env never is.
 .env
+
+# Postgres data lives in a named Docker volume, but belt and braces.
+pgdata/
+
+# Editors.
 .idea/
 .vscode/
-.pytest_cache/
