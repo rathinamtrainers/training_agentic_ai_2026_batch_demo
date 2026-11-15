@@ -1,0 +1,44 @@
+# One environment for every lesson demo in 012_curriculum/lessons/.
+#
+# WHAT THIS IS FOR
+# Open the repository root in PyCharm, make one virtual environment from this file, and
+# every lesson demo runs under it. Before this, each lesson's demos folder carried its
+# own requirements and PyCharm wanted an interpreter per lesson, which is sixteen
+# environments to build and keep in step for a course taught out of one window.
+#
+# WHAT THIS IS NOT FOR
+# The project use cases under 015_project/*/demo/ keep their own pinned pyproject.toml
+# and their own .venv, and they must. UC1 pins google-adk==2.6.3 while lesson 4 pins
+# 2.10.0 — the gap is deliberate and is taught — so one environment cannot hold both.
+# Never install a use case's dependencies into this one.
+#
+# Lesson 4's second environment stays separate too. requirements-adk28.txt beside that
+# lesson installs google-adk==2.8.0 into a throwaway .venv-adk28 so the room can watch
+# the same code behave differently on an older release. That is the demo. Folding it in
+# here would delete the point of it.
+#
+# PINNED, NOT FLOATED
+# These versions are demonstrated live. A transitive upgrade the night before a session
+# is not a risk worth taking. When one goes stale, bump it deliberately and re-run every
+# lesson demo before the room sees it.
+#
+# Python 3.13, the runtime pinned for the whole programme. See .python-version.
+#
+# HOW TO INSTALL (uv, never bare pip)
+#   uv venv --python 3.13
+#   uv pip install -r requirements.txt
+# Then point PyCharm at .venv/Scripts/python.exe.
+
+# Lesson 2 — structured output validated against a schema.
+pydantic==2.12.5
+
+# Lesson 4 — the same loop inside a framework. ADK 2.10.0 is what the 2026-10-01
+# research recommends (005_research/2026-10-01/report.md §2.2), and google-genai moves
+# with it or not at all: that pairing is itself the lesson.
+google-adk==2.10.0
+google-genai==2.31.0
+# ADK reaches models other than Gemini through LiteLlm, which is not installed with it.
+litellm==1.105.1
+
+# Lessons 1 and 3 need nothing beyond the standard library, on purpose: the first loop
+# is hand-written with urllib so the room sees there is no magic in it.

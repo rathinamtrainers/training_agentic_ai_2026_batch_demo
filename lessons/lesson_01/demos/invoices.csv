@@ -1,0 +1,13 @@
+invoice_number,customer,amount_eur,status,paid_on,payment_reference
+4465,Kestrel Logistics,1840.00,paid,2026-03-02,PAY-88120
+4466,Arden Foods,312.50,paid,2026-03-04,PAY-88131
+4467,Nordwind GmbH,9200.00,unpaid,,
+4468,Halden & Co,775.20,paid,2026-03-05,PAY-88140
+4469,Pine Street Dental,129.99,paid,2026-03-09,PAY-88152
+4470,Orbis Retail,4410.00,unpaid,,
+4471,Calder Engineering,2380.00,paid,2026-03-12,PAY-88177
+4472,Mirelle Studio,640.00,paid,2026-03-12,PAY-88178
+4473,Tamsin Partners,15500.00,unpaid,,
+4474,Brightwater Ltd,980.75,paid,2026-03-16,PAY-88190
+4475,Quill & Hart,212.00,paid,2026-03-18,PAY-88204
+4480,Westmoor Clinic,3120.00,unpaid,,
