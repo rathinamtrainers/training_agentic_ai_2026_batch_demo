@@ -1,0 +1,6 @@
+file,supplier,invoice_number,date,subtotal,tax,amount
+inv_4471_sharma.txt,SHARMA TRADERS,4471,2026-03-12,35593.22,6406.78,42000.0
+inv_4472_sharma.txt,Sharma Traders,4472,2026-03-13,10000.0,1800.0,11800.0
+inv_5120_ravi.txt,RAVI ELECTRICALS,5120,2022-03-12,9000.0,1620.0,10620.0
+inv_88_gupta.txt,M/s Gupta Hardware & Sons,88/2026,2026-03-21,5000.0,900.0,5900.0
+inv_A2291_kaveri.txt,KAVERI PACKAGING INDUSTRIES,A-2291,2026-04-02,100000.0,18000.0,118000.0

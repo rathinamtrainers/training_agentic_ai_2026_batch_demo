@@ -1,0 +1,6 @@
+Invoice no. 4472 / Sharma Traders / 13.03.2026
+To: Northwind Assurance, Chennai
+Bubble wrap rolls x 40 ............ 10,000.00
+GST 18% ........................... 1,800.00
+TOTAL ............................. 11,800.00
+Pay within 30 days. Thank you!

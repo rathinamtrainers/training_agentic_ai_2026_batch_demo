@@ -1,0 +1,12 @@
++--------------------------------------------------------------+
+| BLUEFIN LOGISTICS PVT LTD               INVOICE NO: BL-26-00802 |
+| GSTIN 33AAACB9876Q1Z2                   INVOICE DATE: 2026-03-12 |
++--------------------------------------------------------------+
+| Bill to: Northwind Assurance Pvt Ltd, Chennai                 |
+| Service: Freight, Chennai - Madurai, 2 consignments           |
++--------------------------------------------------------------+
+| TAXABLE VALUE:      9500.00                                   |
+| GST 18%:            1710.00                                   |
+| TOTAL PAYABLE:     11210.00                                   |
++--------------------------------------------------------------+
+This is a system-generated invoice and needs no signature.
