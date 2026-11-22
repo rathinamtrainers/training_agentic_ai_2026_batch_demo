@@ -1,0 +1,5 @@
+# Demo 4 only: the "old version" environment. ADK 2.8.0 is the last release before the
+# 2.9.0 session change and the 2.10.0 ${var} change.
+google-adk==2.8.0
+google-genai==2.31.0
+litellm==1.105.1

@@ -1,0 +1,5 @@
+# Lesson 4 demos. Pinned exactly, on purpose: this lesson is about pinning.
+# ADK 2.10.0 is the version the 2026-10-01 research recommends (005_research/2026-10-01/report.md §2.2).
+google-adk==2.10.0
+google-genai==2.31.0
+litellm==1.105.1
